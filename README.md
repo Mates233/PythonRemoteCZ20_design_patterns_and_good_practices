@@ -1,3 +1,4 @@
+## Sumár
 Tento repozitář je součástí kurzu pythonu, který pořádá SDA.
 
 Modul, kterého se toto úložiště týká, je Good Practices and Design Patterns v Pythonu.
