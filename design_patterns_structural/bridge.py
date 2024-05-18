@@ -65,15 +65,24 @@ class PayPal(PaymentMethod):
         print(f"Paid {amount} using PayPal.")
 
 
+class Cash(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paid {amount} in cash.")
+
+
 def main():
     credit_card = CreditCard()
     paypal = PayPal()
+    cash = Cash()
 
     tea_with_credit = Tea(credit_card, 3.5)
     coffee_with_paypal = Coffee(paypal, 4.5)
+    tea_with_cash = Tea(cash, 3.0)
 
     tea_with_credit.purchase()
     coffee_with_paypal.purchase()
+    tea_with_cash.purchase()
+
 
 if __name__ == "__main__":
     main()

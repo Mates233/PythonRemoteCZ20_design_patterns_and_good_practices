@@ -67,21 +67,24 @@ def main():
     # Create a simple operation
     simple_operation = SimpleOperation()
 
+    # processed_data = simple_operation.execute("simple data")
+    # print(processed_data)
+
     # Decorate the operation with logging
     logged_operation = LoggingDecorator(simple_operation)
-
-    logged_operation.execute("logged data")
+    # logged_operation.execute("logged data")
 
     # Optionally, decorate with authentication as well
     authenticated_and_logged_operation = AuthenticationDecorator(logged_operation)
 
     # Execute the decorated operation
-    result = authenticated_and_logged_operation.execute("authorized data")
-    print(result)
+    # result = authenticated_and_logged_operation.execute("authorized data")
+    # print(result)
 
     # Execute with unauthorized data
-    result = authenticated_and_logged_operation.execute("unauthorized1 data")
+    result = authenticated_and_logged_operation.execute("unauthorized data")
     print(result)
+
 
 if __name__ == "__main__":
     main()

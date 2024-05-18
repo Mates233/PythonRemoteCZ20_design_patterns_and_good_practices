@@ -37,8 +37,7 @@ class Car:
 class CarFactory:       # drzime iba 4 objekty na ako class variable
     engines = [Engine('polo', 1.6, 'DIESEL'),
                Engine('poloGTI', 2.0, 'GASOLINE'),
-               Engine('golf', 1.5, 'GASOLINE'),
-               Engine('e', 0.0, 'ELECTRIC')]
+               Engine('golf', 1.5, 'GASOLINE')]
 
     @staticmethod
     def create_vw_polo(vin):
@@ -71,7 +70,7 @@ def main():
     }
 
     for _ in range(1000):
-        engine_type = random.randint(0, 3)
+        engine_type = random.randint(0, 2)
         vin = generate_vin()
         car_creation_method = car_creation_methods[engine_type]
         produced_cars.append(car_creation_method(vin))
