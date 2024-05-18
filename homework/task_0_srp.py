@@ -10,10 +10,10 @@ Třída v současné době zpracovává správu zásob, prodejní transakce a vy
 které by měly být odděleny do samostatných tříd.
 """
 
-class BookStore:
+
+class InventoryManager:
     def __init__(self):
         self.inventory = {}
-        self.sales = []
 
     def add_book(self, title, quantity):
         if title in self.inventory:
@@ -21,26 +21,58 @@ class BookStore:
         else:
             self.inventory[title] = quantity
 
-    def sell_book(self, title, quantity):
+    def remove_book(self, title, quantity):
         if title in self.inventory and self.inventory[title] >= quantity:
             self.inventory[title] -= quantity
-            self.sales.append((title, quantity))
+            return True
         else:
-            print("Book out of stock or not enough quantity.")
+            return False
 
     def get_inventory(self):
         return self.inventory
 
-    def get_sales_report(self):
+
+class SalesManager:
+    def __init__(self):
+        self.sales = []
+
+    def sell_book(self, title, quantity, inventory_manager):        # Dependency Injection
+        if inventory_manager.remove_book(title, quantity):
+            self.sales.append((title, quantity))
+        else:
+            print("Book out of stock or not enough quantity.")
+
+    def get_sales(self):
+        return self.sales
+
+
+class SalesReport:
+    @staticmethod
+    def generate_report(sales):
         report = "Sales Report:\n"
-        for sale in self.sales:
+        for sale in sales:
             report += f"Title: {sale[0]}, Quantity: {sale[1]}\n"
         return report
 
 
-"""
-Idealne definujte samostatné třídy, které budou
-1 - starat se o inventuru (přidávání, odebírání)
-2 - starat se o proces prodeje (prodej knih, vedení údajů o prodeji).
-3 - starat se o vykazování prodeje (generování výkazu o prodeji).
-"""
+# Usage Example
+inventory_manager = InventoryManager()
+sales_manager = SalesManager()
+sales_report = SalesReport()
+
+# Add books to inventory
+inventory_manager.add_book("The Great Gatsby", 10)
+inventory_manager.add_book("1984", 5)
+inventory_manager.add_book("Bible", 8)
+
+# Sell books
+sales_manager.sell_book("The Great Gatsby", 2, inventory_manager)
+sales_manager.sell_book("1984", 1, inventory_manager)
+sales_manager.sell_book("Bible", 3, inventory_manager)
+
+# Get inventory
+print("Current Inventory:")
+print(inventory_manager.get_inventory())
+
+# Generate sales report
+print(sales_report.generate_report(sales_manager.get_sales()))

@@ -12,7 +12,8 @@ class Car:
 
 class CarBuilder:
     def __init__(self):
-        self.car = Car()
+        # better implementation in this case is to start with
+        self.car = None
 
     def add_seats(self, number):
         self.car.seats = number
@@ -31,7 +32,9 @@ class CarBuilder:
         return self
 
     def build(self):
-        return self.car
+        built_car = self.car
+        self.car = None
+        return built_car
 
 
 builder = CarBuilder()
