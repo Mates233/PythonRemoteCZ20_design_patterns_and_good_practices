@@ -40,3 +40,19 @@ class LegacyUserAdapter(User):
     pass
 
 
+# chceme mít možnost zavolat metody get_name, get_email a get_address našeho nového uživatele
+def main():
+    legacy_user_api = LegacyUserAPI()
+
+    user_id = 1
+    user_adapter = LegacyUserAdapter(legacy_user_api, user_id)
+
+    # Use the adapter to get user details
+    print("User Details:")
+    print(f"Name: {user_adapter.get_name()}")
+    print(f"Email: {user_adapter.get_email()}")
+    print(f"Address: {user_adapter.get_address()}")
+
+
+if __name__ == '__main__':
+    main()
