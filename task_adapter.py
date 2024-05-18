@@ -8,6 +8,9 @@ získání konkrétních údajů o uživateli, jako je jméno, e-mail a adresa.
 
 class LegacyUserAPI:
 
+    def __init__(self):
+        pass # bonus pridat data o useroch
+
     def get_user(self, user_id):
         # Simulate a REST API call to get user data
         return {
@@ -37,7 +40,19 @@ class User:
 
 # Implementace adaptéru
 class LegacyUserAdapter(User):
-    pass
+  def __init__(self, legacy_user_api, user_id):
+    self.legacy_user_api = legacy_user_api
+    self.user_data = self.legacy_user_api.get_user(user_id)
+
+  def get_name(self):
+    return self.user_data["name"]
+
+  def get_email(self):
+    return self.user_data["email"]
+
+  def get_address(self):
+    address = self.user_data["address"]
+    return f'{address["street"]}, {address["city"]}, {address["state"]} {address["zip"]}'
 
 
 # chceme mít možnost zavolat metody get_name, get_email a get_address našeho nového uživatele
