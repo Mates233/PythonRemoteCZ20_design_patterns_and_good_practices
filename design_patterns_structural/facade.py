@@ -23,6 +23,7 @@ class Thermostat:
 
 
 class SecuritySystem:
+
     def arm(self):
         print("The security system is armed")
 
