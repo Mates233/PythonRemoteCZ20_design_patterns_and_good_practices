@@ -17,3 +17,63 @@ Rozhraní PaymentMethod definuje metody, které musí konkrétní platební meto
 Třídy CreditCard a PayPal implementují rozhraní PaymentMethod a poskytují konkrétní implementace metody pay.
 """
 
+from abc import ABC, abstractmethod
+
+
+class Beverage(ABC):
+    def __init__(self, payment_method):
+        self.payment_method = payment_method
+
+    @abstractmethod
+    def purchase(self):
+        pass
+
+
+class Tea(Beverage):
+    def __init__(self, payment_method, price):
+        super().__init__(payment_method)
+        self.price = price
+
+    def purchase(self):
+        print("Purchasing tea...")
+        self.payment_method.pay(self.price)
+
+
+class Coffee(Beverage):
+    def __init__(self, payment_method, price):
+        super().__init__(payment_method)
+        self.price = price
+
+    def purchase(self):
+        print("Purchasing coffee...")
+        self.payment_method.pay(self.price)
+
+
+class PaymentMethod(ABC):
+    @abstractmethod
+    def pay(self, amount):
+        pass
+
+
+class CreditCard(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paid {amount} using Credit Card.")
+
+
+class PayPal(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paid {amount} using PayPal.")
+
+
+def main():
+    credit_card = CreditCard()
+    paypal = PayPal()
+
+    tea_with_credit = Tea(credit_card, 3.5)
+    coffee_with_paypal = Coffee(paypal, 4.5)
+
+    tea_with_credit.purchase()
+    coffee_with_paypal.purchase()
+
+if __name__ == "__main__":
+    main()

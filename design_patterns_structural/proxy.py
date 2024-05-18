@@ -13,3 +13,4 @@ remote - reprezentace objektu v jiném prostoru (např. vzdálený počítač)
 virtual - lze použít jako mezipaměť pro odkaz na objekt
 security - přidání bezpečnostní vrstvy k objektu
 """
+

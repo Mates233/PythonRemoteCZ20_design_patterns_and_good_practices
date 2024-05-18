@@ -37,3 +37,38 @@ logger2 = Logger("ignored.txt")
 
 logger1.log("This is a test log entry.")
 logger2.log("This is another log entry.")
+
+
+
+# Riesenie s vnorenou triedou - tiez spravne
+import datetime
+
+class Logger:
+    class __Logger:
+        def __init__(self, filename):
+            self.filename = filename
+            self.file = open(self.filename, "a")
+
+        def _write_log(self, message):
+            self.file.write(f"{datetime.datetime.now()} : {message}\n")
+            self.file.flush()
+
+        def log(self, message):
+            self.file.write(f"{message}\n")
+            self.file.flush()
+
+    _instance = None
+
+    def __new__(cls, filename):
+        if cls._instance is None:
+            cls._instance = cls.__Logger(filename)
+        return cls._instance
+
+    def log(self, message):
+        self._instance.log(message)
+
+logger = Logger("log.txt")
+logger._write_log("rejcata")
+
+logger2 = Logger("log.txt")
+logger2.log("mrkev")
