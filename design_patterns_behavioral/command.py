@@ -106,5 +106,6 @@ def main():
     # Redo the last undone command
     invoker.redo()
 
+
 if __name__ == "__main__":
     main()
