@@ -45,8 +45,9 @@ from abc import ABC, abstractmethod
 
 class Animal(ABC):
     """
-    Animal is an abstract base class (ABC). It defines a contract for
-    subclasses, ensuring they implement the `make_sound` method.
+    Animal je abstraktní bázová třída (ABC). Definuje smlouvu pro
+    podtřídy, která zajišťuje, že implementují metodu `make_sound`.
+    Animal má pouze abstraktní metody a teda funguje jako rozhraní.
     """
     @abstractmethod
     def make_sound(self):

@@ -46,10 +46,10 @@ class Employee(Component):
         pass
 
     def display(self, indent=0):
-        pass
+        print(' ' * indent + f"Employee: {self.name}, Salary: {self.salary}")
 
     def get_salary(self):
-        pass
+        return self.salary
 
 
 class Department(Component):
@@ -58,16 +58,21 @@ class Department(Component):
         self._components = []
 
     def add(self, component):
-        pass
+        self._components.append(component)
 
     def remove(self, component):
-        pass
+        self._components.remove(component)
 
     def display(self, indent=0):
-        pass
+        print(' ' * indent + f"Department: {self.name}")
+        for component in self._components:
+            component.display(indent + 4)
 
     def get_salary(self):
-        pass
+        total_salary = 0
+        for component in self._components:
+            total_salary += component.get_salary()
+        return total_salary
 
 
 def main():
@@ -77,17 +82,24 @@ def main():
     emp3 = Employee("Charlie", 20000)
     emp4 = Employee("Diana", 25000)
 
+    # Dep with 2 emp
     dept1 = Department("HR")
+    dept1.add(emp1)
+    dept1.add(emp2)
+
+    # Dep with 2 emp
     dept2 = Department("Engineering")
-    # TODO pridat zamestnance do oddeleni
+    dept2.add(emp3)
+    dept2.add(emp4)
 
+    # Company dep
     company = Department("Company")
+    company.add(dept1)
+    company.add(dept2)
 
-    # TODO pridat zamenstance do spolecnosti
+    # $$$
     company.display()
-
     print(f"Total Salary: {company.get_salary()}")
-
 
 if __name__ == '__main__':
     main()

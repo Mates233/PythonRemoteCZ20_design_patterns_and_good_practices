@@ -2,8 +2,8 @@
 Demeterův zákon (The Law Of Demeter), známý také jako princip nejmenšího množství znalostí,
 který podporuje volné propojení v softwarových systémech. Nařizuje, že daný objekt by měl
 komunikovat pouze se svými bezprostředními spolupracovníky a neměl by „pronikat“ přes více vrstev objektů.
-Konkrétně by měl objekt volat pouze metody:
 
+Konkrétně by měl objekt volat pouze metody:
 1.	sám sobě
 2.	svých přímých atributů
 3.	Objekty vytvořené v rámci jeho metod
@@ -42,6 +42,7 @@ person = Person(car)
 print(person.get_car_engine_horsepower()) 
 """
 
+
 class Engine:
     def __init__(self, horsepower):
         self.horsepower = horsepower
@@ -67,8 +68,8 @@ class Person:
 
 
 
-engine = Engine(150)
-car = Car(engine)
-person = Person(car)
-
-print(person.get_car_engine_horsepower())
+#engine = Engine(150)
+#car = Car(engine)
+#person = Person(car)
+#
+#print(person.get_car_engine_horsepower())
