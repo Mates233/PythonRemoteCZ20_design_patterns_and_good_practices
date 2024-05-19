@@ -54,7 +54,8 @@ jako je závěrečný projekt tohoto kurzu: https://ljvmiranda921.github.io/note
 - Visitor
 
 Další zdroje:
-
+- Decorator vs Decorator pattern: https://betterprogramming.pub/decorator-pattern-and-python-decorators-b0b573f4c1ce
+- 
 
 ### Domácí úkol:
 Zkuste vyřešit úkol 0 a úkol 1 ve složce homework. Přidala jsem také další úkol pro ty, kteří si chtějí procvičit více.
