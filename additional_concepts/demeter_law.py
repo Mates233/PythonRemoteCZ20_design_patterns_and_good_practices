@@ -68,8 +68,18 @@ class Person:
 
 
 
-#engine = Engine(150)
-#car = Car(engine)
-#person = Person(car)
-#
-#print(person.get_car_engine_horsepower())
+engine = Engine(150)
+car = Car(engine)
+person = Person(car)
+
+print(person.get_car_engine_horsepower())
+
+
+# name mangling
+class MyClass:
+    def __init__(self, name):
+        self.__name = name
+
+my_class = MyClass("My Class")
+# print(my_class.__name)  # AttributeError: 'MyClass' object has
+print(my_class._MyClass__name)

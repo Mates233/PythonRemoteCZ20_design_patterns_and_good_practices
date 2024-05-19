@@ -11,6 +11,7 @@ Takový iterátor by měl implementovat metody __iter__() a __next__(), které u
 2.	Iterátor: Definuje rozhraní pro přístup k prvkům kolekce.
 """
 
+
 class Book:
     def __init__(self, title, author):
         self.title = title
