@@ -29,6 +29,7 @@ jako je závěrečný projekt tohoto kurzu: https://ljvmiranda921.github.io/note
 - Abstract Factory
 - Prototype
 
+Na druhe přednášce (18.5.2024) jsme se zabývali:
 
 **Strukturální návrhové vzory**
 - Adapter
@@ -39,6 +40,7 @@ jako je závěrečný projekt tohoto kurzu: https://ljvmiranda921.github.io/note
 - Flyweight
 - Proxy
 
+Na třetí přednášce (19.5.2024) jsme se zabývali:
 
 **Návrhové vzory chování**
 - Chain of Responsibility
@@ -55,8 +57,12 @@ jako je závěrečný projekt tohoto kurzu: https://ljvmiranda921.github.io/note
 
 Další zdroje:
 - Decorator vs Decorator pattern: https://betterprogramming.pub/decorator-pattern-and-python-decorators-b0b573f4c1ce
-- 
+- Free alternativa k GitHub Copilot pluginu: https://plugins.jetbrains.com/plugin/20540-codeium-ai-autocomplete-and-chat-for-python-js-java-go--
 
-### Domácí úkol:
-Zkuste vyřešit úkol 0 a úkol 1 ve složce homework. Přidala jsem také další úkol pro ty, kteří si chtějí procvičit více.
-Zkuske dokončit úkol ze souboru task_composite.py
+### Úkoly:
+Úkoly 1,2,3,4 by měly být plně vyřešeny, v úkolu 5 zbývá dokončit metodu update.
+
+Bonusový úkol je trochu náročnější pro ty, kteří chtějí vyzkoušet něco navíc, je zo série 100 days of code,
+kde sou i další zajímavé úkoly. Vybral jsem úkol Coffee Machine, který se týka OOP a dá se řešit pomocí návrhového
+vzoru State.
+https://github.com/LeeRenJie/100-days-of-code-in-python/blob/main/Day016-OOP-Coffee_Machine.py
