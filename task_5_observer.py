@@ -49,16 +49,20 @@ class WeatherData(Subject):
         self._pressure = 0.0
 
     def register_observer(self, observer):
-        # TODO: Add observer to the list
-        pass
+        if observer not in self._observers:
+            self._observers.append(observer)
+        else:
+            print("Observer already exists")
 
     def remove_observer(self, observer):
-        # TODO: Remove observer from the list
-        pass
+        if observer in self._observers:
+            self._observers.remove(observer)
+        else:
+            print("Observer does not exist")
 
     def notify_observers(self):
-        # TODO: Notify all observers
-        pass
+        for observer in self._observers:
+            observer.update(self._temperature, self._humidity, self._pressure)
 
     def measurements_changed(self):
         self.notify_observers()
@@ -84,12 +88,12 @@ class CurrentConditionsDisplay(Observer, DisplayElement):
         weather_data.register_observer(self)
 
     def update(self, temperature, humidity, pressure):
-        # TODO: Update temperature and humidity
-        pass
+        self._temperature = temperature
+        self._humidity = humidity
+        self.display()
 
     def display(self):
-        # TODO: Display current conditions
-        pass
+        print(f"Current conditions: {self._temperature}C degrees and {self._humidity}% humidity")
 
 
 class StatisticsDisplay(Observer, DisplayElement):
@@ -106,8 +110,8 @@ class StatisticsDisplay(Observer, DisplayElement):
         pass
 
     def display(self):
-        # TODO: Display statistics
-        pass
+        avg_temp = self._temp_sum / self._num_readings
+        print(f"Avg temperature: {avg_temp}, Max temperature: {self._max_temp}, Min temperature: {self._min_temp}")
 
 
 def main():
@@ -116,9 +120,9 @@ def main():
     current_display = CurrentConditionsDisplay(weather_data)
     statistics_display = StatisticsDisplay(weather_data)
 
-    weather_data.set_measurements(80, 65, 30.4)
-    weather_data.set_measurements(82, 70, 29.2)
-    weather_data.set_measurements(78, 90, 29.2)
+    weather_data.set_measurements(21, 65, 30.4)
+    weather_data.set_measurements(8, 70, 29.2)
+    weather_data.set_measurements(12, 90, 29.2)
 
 
 if __name__ == "__main__":

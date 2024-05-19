@@ -69,6 +69,10 @@ class ChatChannel:
         if observer not in self._observers:
             self._observers.append(observer)
 
+    def unsubscribe(self, observer):
+        if observer in self._observers:
+            self._observers.remove(observer)
+
     def send_message(self, message, observer_type):
         self._messages.append(message)
         self.notify_about_change(message, observer_type)
